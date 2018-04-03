@@ -9,6 +9,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <%= link_to 'Main Page', root_path %>
+        <%= link_to 'Drivers', drivers_path %>
+        <%= link_to 'Passengers', passengers_path %>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+    </footer>
   </body>
 </html>

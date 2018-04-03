@@ -1,7 +1,6 @@
 <h2>All Passengers</h2>
 
 <%# the first 50 part is temporary %>
-<% @passengers.first(50).each do |passenger| %>
-  <p>Passenger ID: <%= passenger.id %> </p>
-  <p>Passenger Name: <%= passenger.name %> </p>
+<% @passengers.each do |passenger| %>
+  <p> <%= link_to passenger.name, passenger_path(passenger) %> </p>
 <% end %>

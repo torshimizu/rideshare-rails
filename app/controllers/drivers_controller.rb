@@ -15,7 +15,7 @@ class DriversController < ApplicationController
   def create
     new_driver = Driver.new(driver_params)
     if new_driver.save
-      redirect_to drivers_path
+      redirect_to driver_path(new_driver.id)
     end
   end
 
@@ -25,7 +25,7 @@ class DriversController < ApplicationController
   end
 
   def update
-    
+
     the_driver = Driver.find(params[:id])
     the_driver.update_attributes(driver_params)
 
@@ -35,9 +35,14 @@ class DriversController < ApplicationController
     end
   end
 
+  # don't forget delete
 
+  def by_name
+    driver_name = params[:name]
+    @driver = Driver.find_by(name: driver_name)
 
-
+    redirect_to driver_path(@driver.id)
+  end
 
   private
   def driver_params
