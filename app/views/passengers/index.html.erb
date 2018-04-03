@@ -1,0 +1,7 @@
+<h2>All Passengers</h2>
+
+<%# the first 50 part is temporary %>
+<% @passengers.first(50).each do |passenger| %>
+  <p>Passenger ID: <%= passenger.id %> </p>
+  <p>Passenger Name: <%= passenger.name %> </p>
+<% end %>
