@@ -5,7 +5,10 @@ root 'rideshare#index'
 get 'drivers/by_name', to: 'drivers#by_name', as: 'by_name'
 resources :drivers
 
+
 resources :trips
+
+get 'passengers/by_name', to: 'passengers#by_name', as: 'passenger_by_name'
 resources :passengers
 
 resources :rideshare, only: [:index]
