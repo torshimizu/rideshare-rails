@@ -27,7 +27,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(passenger_id: params[:passenger_id], driver_id: driver.id)
     @trip.date = Date.today
     cost = (1000..5000).to_a.sample
-    @trip.cost = cost/100.00
+    @trip.cost = (cost/100.00).round(2)
 
     if @trip.save
       redirect_to trip_path(@trip)
