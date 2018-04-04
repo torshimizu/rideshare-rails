@@ -1,7 +1,11 @@
 <h3> Driver info: </h3>
 
 <h2><%=@driver.name%></h2>
+<p><%= link_to("Edit info", edit_driver_path(@driver.id)) %></p>
 <p>ID : <%=@driver.id%></p>
 <p>VIN : <%=@driver.vin%></p>
 
 <p> <%= link_to 'See Trips', driver_trips_path(@driver) %>
+  <br></br>
+  <br></br>
+<p> <%= link_to("Delete", driver_path(@driver), method: :delete, data: {confirm: "Are you sure you want to delete #{@driver.name}?"}) %></p>
