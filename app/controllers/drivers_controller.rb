@@ -30,7 +30,7 @@ class DriversController < ApplicationController
     the_driver.update_attributes(driver_params)
 
     if the_driver.save
-      redirect_to drivers_path
+      redirect_to driver_path(the_driver.id)
 
     end
   end
@@ -42,7 +42,7 @@ class DriversController < ApplicationController
 
     @driver = Driver.find_by(name: driver_name)
 
-    redirect_to driver_path(@driver.id)
+    redirect_to driver_path(@driver)
   end
 
   def destroy
