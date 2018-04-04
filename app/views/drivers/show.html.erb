@@ -3,3 +3,5 @@
 <h2><%=@driver.name%></h2>
 <p>ID : <%=@driver.id%></p>
 <p>VIN : <%=@driver.vin%></p>
+
+<p> <%= link_to 'See Trips', driver_trips_path(@driver) %>

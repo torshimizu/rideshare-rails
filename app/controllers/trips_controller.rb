@@ -1,6 +1,14 @@
 class TripsController < ApplicationController
   def index
-  @trips  = Trip.all
+    driver = params[:driver_id]
+    passenger = params[:passenger_id]
+    if driver
+      @trips = Trip.where(driver_id: driver)
+    elsif passenger
+      @trips = Trip.where(passenger_id: passenger)
+    else
+      @trips  = Trip.all
+    end
   end
 
   def new
@@ -8,29 +16,21 @@ class TripsController < ApplicationController
   end
 
   def create
-end
+  end
 
-def edit
-end
+  def edit
+  end
 
+  def update
+  end
 
- def update
- end
+  def destroy
+  end
 
- def destroy
- end
+  private
 
- private
-
-def trip_params
-  return params.require(:trip).permit(:cost, :rate)
-end
-
-end
-
-
-
-
-
+  def trip_params
+    return params.require(:trip).permit(:cost, :rate)
+  end
 
 end

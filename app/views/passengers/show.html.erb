@@ -3,3 +3,5 @@
 <h2> <%= @passenger.name %> </h2>
 <p> ID : <%= @passenger.id %> </p>
 <p> Phone #: <%= @passenger.phone_num %> </p>
+
+<p> <%= link_to 'See Trips', passenger_trips_path(@passenger) %>
