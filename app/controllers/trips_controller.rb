@@ -11,21 +11,41 @@ class TripsController < ApplicationController
     end
   end
 
-  def new
-    @trip = Trip.new
-  end
-
   def show
     @trip = Trip.find(params[:id])
+    @driver = Driver.find(@trip.driver_id)
+    @passenger = Passenger.find(@trip.passenger_id)
   end
 
+  def new
+    @trip = Trip.new(passenger_id: params[:passenger_id])
+  end
+
+
   def create
+    driver = Driver.all.sample
+    @trip = Trip.new(passenger_id: params[:passenger_id], driver_id: driver.id)
+    @trip.date = Date.today
+    cost = (1000..5000).to_a.sample
+    @trip.cost = cost/100.00
+
+    if @trip.save
+      redirect_to trip_path(@trip)
+    else
+      redirect_to passenger_path(@trip.passenger_id)
+    end
+
   end
 
   def edit
   end
 
   def update
+    @trip = Trip.find(params[:id])
+    @trip.rating = params[:trip][:rating]
+
+    @trip.save
+    redirect_to trip_path(@trip)
   end
 
   def destroy

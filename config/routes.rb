@@ -9,7 +9,7 @@ end
 
 get 'passengers/by_name', to: 'passengers#by_name', as: 'passenger_by_name'
 resources :passengers do
-  resources :trips, only: [:index, :new]
+  resources :trips, only: [:index, :new, :create]
 end
 
 resources :trips

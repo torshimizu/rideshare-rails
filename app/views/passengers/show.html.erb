@@ -7,6 +7,8 @@
 <p> Total Spent: $<%= @passenger.total_spent %> </p>
 
 <p> <%= link_to 'See Trips', passenger_trips_path(@passenger) %>
+
+<p> <%= link_to 'Request Trip', passenger_trips_path(@passenger), method: :post %>
   <br></br>
   <br></br>
 <p> <%= link_to("Delete", passenger_path(@passenger), method: :delete, data: {confirm: "Are you sure you want to delete #{@passenger.name}?"}) %></p>
