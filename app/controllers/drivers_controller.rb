@@ -35,8 +35,6 @@ class DriversController < ApplicationController
     end
   end
 
-  # don't forget delete
-
   def by_name
     driver_name = params[:name]
 

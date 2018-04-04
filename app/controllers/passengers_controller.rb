@@ -39,7 +39,7 @@ class PassengersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     Passenger.destroy(params[:id])
   end
 
