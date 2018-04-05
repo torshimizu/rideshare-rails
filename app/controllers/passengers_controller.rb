@@ -9,13 +9,12 @@ class PassengersController < ApplicationController
   end
 
   def create
-    @passenger = Passenger.find(params[:id])
-    @passenger.new(passenger_params)
+    @passenger = Passenger.new(passenger_params)
 
     if @passenger.save
       redirect_to passengers_path
     else
-      render :edit
+      render :new
     end
   end
 

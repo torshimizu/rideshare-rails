@@ -2,6 +2,12 @@
   <%= page_title %>
 </h4>
 
+<% if @passenger.errors.any?%>
+<% @passenger.errors.each do |column, message|%>
+<%= column%> - <%= message %>
+<%end%>
+<%end%>
+
 <%= form_for @passenger do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>

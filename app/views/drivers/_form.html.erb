@@ -1,6 +1,13 @@
 <h4>
   <%= page_title %>
 </h4>
+<% if @driver.errors.any?%>
+<% @driver.errors.each do |column, message|%>
+<%= column%> - <%= message %>
+<%end%>
+<%end%>
+
+
 <%= form_for @driver do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>

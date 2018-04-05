@@ -13,9 +13,11 @@ class DriversController < ApplicationController
   end
 
   def create
-    new_driver = Driver.new(driver_params)
-    if new_driver.save
-      redirect_to driver_path(new_driver.id)
+    @driver = Driver.new(driver_params)
+    if @driver.save
+      redirect_to driver_path(@driver.id)
+    else
+      render :new
     end
   end
 
@@ -26,11 +28,13 @@ class DriversController < ApplicationController
 
   def update
 
-    the_driver = Driver.find(params[:id])
-    the_driver.update_attributes(driver_params)
+    @driver = Driver.find(params[:id])
+    @driver.update_attributes(driver_params)
 
-    if the_driver.save
-      redirect_to driver_path(the_driver.id)
+    if @driver.save
+      redirect_to driver_path(@driver.id)
+    else
+      render :edit
 
     end
   end
@@ -41,6 +45,7 @@ class DriversController < ApplicationController
     @driver = Driver.find_by(name: driver_name)
 
     if @driver == nil
+      #flash.now[:error] = "Driver not found"
       redirect_to drivers_path
     else
       redirect_to driver_path(@driver)
