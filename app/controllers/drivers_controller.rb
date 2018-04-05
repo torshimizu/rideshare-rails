@@ -48,12 +48,18 @@ class DriversController < ApplicationController
   end
 
   def destroy
-     Driver.destroy(params[:id])
+    no_driver = Driver.find(9999)
 
-     redirect_to drivers_path
+    Trip.replace_deleted_driver(params[:id], no_driver)
+
+    Driver.destroy(params[:id])
+
+    redirect_to drivers_path
   end
 
+
   private
+
   def driver_params
     return params.require(:driver).permit(:name, :vin)
   end
