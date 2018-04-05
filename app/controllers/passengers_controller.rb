@@ -47,7 +47,12 @@ class PassengersController < ApplicationController
     passenger_name = params[:name]
     @passenger = Passenger.find_by(name: passenger_name)
 
-    redirect_to passenger_path(@passenger.id)
+    if @passenger == nil
+      redirect_to passengers_path
+    else
+
+      redirect_to passenger_path(@passenger.id)
+    end
   end
 
   private

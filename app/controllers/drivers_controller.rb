@@ -40,7 +40,11 @@ class DriversController < ApplicationController
 
     @driver = Driver.find_by(name: driver_name)
 
-    redirect_to driver_path(@driver)
+    if @driver == nil
+      redirect_to drivers_path
+    else
+      redirect_to driver_path(@driver)
+    end
   end
 
   def destroy
