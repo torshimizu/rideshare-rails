@@ -6,7 +6,21 @@
 <p> Phone #: <%= @passenger.phone_num %> </p>
 <p> Total Spent: $<%= @passenger.total_spent %> </p>
 
-<p> <%= link_to 'See Trips', passenger_trips_path(@passenger) %>
+<br>
+<h4> Trips: </h4>
+<ul>
+  <% @passenger.trips.each do |trip| %>
+    <li>
+      <%= link_to trip.id, trip_path(trip) %>
+      <%= trip.date %>
+      <%= trip.driver.name %>
+      <%= trip.rating %>
+      <%= trip.cost %>
+    </li>
+  <% end %>
+</ul>
+
+<br>
 
 <p> <%= link_to 'Request Trip', passenger_trips_path(@passenger), method: :post %>
   <br></br>
