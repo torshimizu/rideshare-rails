@@ -1,0 +1,22 @@
+<h4> Trips: </h4>
+  <ul class='display-trips'>
+    <li>ID</li>
+    <li>Date</li>
+    <li><%= pass_driver %> Name</li>
+    <li>Rating</li>
+    <li>Cost</li>
+  </ul>
+  <% model.trips.each do |trip| %>
+    <ul class='display-trips'>
+      <li> <%= link_to trip.id, trip_path(trip) %> </li>
+      <li> <%= trip.date %> </li>
+      <% if model == @passenger %>
+        <li> <%= trip.driver.name %> </li>
+      <% else %>
+        <li> <%= trip.passenger.name %> </li>
+      <% end %>
+      <li> <%= trip.rating %> </li>
+      <li> <%= trip.cost %> </li>
+    </ul>
+  <% end %>
+</ul>
