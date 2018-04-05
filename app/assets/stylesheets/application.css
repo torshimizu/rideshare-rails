@@ -23,12 +23,11 @@ body {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
-  width: 70vw;
+  min-width: 70vw;
   align-content: center;
-  /*border: solid thin black;*/
 }
 
 .display-trips > li {
   text-align: center;
-  width: 12vw;
+  min-width: 12vw;
 }

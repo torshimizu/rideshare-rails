@@ -11,4 +11,4 @@
 <%= render partial: 'shared/display_trips', locals: {model: @driver, pass_driver: 'Passenger'} %>
 
 <br></br>
-<p> <%= link_to("Delete", driver_path(@driver), method: :delete, data: {confirm: "Are you sure you want to delete #{@driver.name}?"}) %></p>
+<p> <%= link_to("Delete Driver", driver_path(@driver), method: :delete, data: {confirm: "Are you sure you want to delete #{@driver.name}?"}) %></p>
