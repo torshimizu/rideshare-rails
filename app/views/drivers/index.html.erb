@@ -1,6 +1,8 @@
 <h2>Drivers</h2>
 
-<%= render partial: "shared/find_by_name", locals: {action_name: "Find Driver", url: by_name_path} %> 
+<%= render partial: "shared/find_by_name", locals: {action_name: "Find Driver", url: by_name_path} %>
+
+
 <% @drivers.each do |driver| %>
   <p> <%= link_to "#{driver.name}", driver_path(driver.id) %> </p>
 <%end%>
