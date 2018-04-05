@@ -53,10 +53,10 @@ class DriversController < ApplicationController
   end
 
   def destroy
-    no_driver = Driver.create(id: 9999, name: 'Driver no longer exists', vin: '')
-    # no_driver = Driver.find(9999)
-
-    Trip.replace_deleted_driver(params[:id], no_driver)
+    # no_driver = Driver.create(id: 9999, name: 'Driver no longer exists', vin: '')
+    # # no_driver = Driver.find(9999)
+    #
+    # Trip.replace_deleted_driver(params[:id], no_driver)
 
     Driver.destroy(params[:id])
 
