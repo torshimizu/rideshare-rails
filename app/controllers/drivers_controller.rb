@@ -1,5 +1,4 @@
 class DriversController < ApplicationController
-  before_action :create_driver9999, only: [:destroy]
 
   def index
     @drivers = Driver.all
@@ -54,7 +53,8 @@ class DriversController < ApplicationController
   end
 
   def destroy
-    no_driver = Driver.find(9999)
+    no_driver = Driver.create(id: 9999, name: 'Driver no longer exists', vin: '')
+    # no_driver = Driver.find(9999)
 
     Trip.replace_deleted_driver(params[:id], no_driver)
 
@@ -68,9 +68,5 @@ class DriversController < ApplicationController
 
   def driver_params
     return params.require(:driver).permit(:name, :vin)
-  end
-
-  def create_driver9999
-    return Driver.create(id: 9999, name: 'Driver no longer exists', vin: '')
   end
 end
