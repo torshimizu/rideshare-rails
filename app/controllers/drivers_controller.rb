@@ -1,4 +1,5 @@
 class DriversController < ApplicationController
+  before_action :create_driver9999, only: [:destroy]
 
   def index
     @drivers = Driver.all
@@ -67,5 +68,9 @@ class DriversController < ApplicationController
 
   def driver_params
     return params.require(:driver).permit(:name, :vin)
+  end
+
+  def create_driver9999
+    return Driver.create(id: 9999, name: 'Driver no longer exists', vin: '')
   end
 end
