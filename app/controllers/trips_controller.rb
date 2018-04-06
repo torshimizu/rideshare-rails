@@ -23,8 +23,23 @@ class TripsController < ApplicationController
 
 
   def create
-    driver = Driver.all.sample
-    @trip = Trip.new(passenger_id: params[:passenger_id], driver_id: driver.id)
+    drivers = Driver.where(disabled: false)
+    longest_driver_not_driving = nil
+    drivers.each do |driver|
+      unless driver.driver_on_trip
+        if driver.trips.empty? || driver.last_trip.date == nil
+          longest_driver_not_driving = driver
+        elsif longest_driver_not_driving == nil || longest_driver_not_driving.trips.empty?
+          longest_driver_not_driving = driver
+        else
+          if longest_driver_not_driving.last_trip.date > driver.last_trip.date
+            longest_driver_not_driving = driver
+          end
+        end
+      end
+    end
+
+    @trip = Trip.new(passenger_id: params[:passenger_id], driver_id: longest_driver_not_driving.id)
     @trip.date = Date.today
     cost = (1000..5000).to_a.sample
     @trip.cost = (cost/100.00).round(2)
