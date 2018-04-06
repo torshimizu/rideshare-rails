@@ -5,10 +5,10 @@ class Driver < ApplicationRecord
 
   def earnings
     earnings = 0
-      self.trips.each do |trip|
-        next if trip.cost.nil?
-        earnings += trip.cost
-      end
+    self.trips.each do |trip|
+      next if trip.cost.nil?
+      earnings += trip.cost
+    end
     return earnings
   end
 
@@ -24,4 +24,28 @@ class Driver < ApplicationRecord
     return stars/count
   end
 
+  def last_trip
+    drivers_trips = self.trips.order(date: :desc)
+    if drivers_trips.length == 0
+      nil
+    end
+    return drivers_trips.first
+  end
+
+  def the_driver
+    longest_driver_not_driving = nil
+    drivers = Driver.where(disabled: false)
+    drivers.each do |driver|
+      if longest_driver_not_driving == nil
+        longest_driver_not_driving = driver
+      else
+        if longest_driver_not_driving.last_trip.date > driver.last_trip.date
+          longest_driver_not_driving = driver
+        end
+      end
+      return longest_driver_not_driving
+    end
+
+
+  end
 end
