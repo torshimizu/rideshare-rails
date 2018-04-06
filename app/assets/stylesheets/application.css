@@ -26,7 +26,7 @@ body {
   color: rgb(49, 213, 193);
 }
 
-/*.display-trips {
+.display-trips {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
@@ -37,13 +37,21 @@ body {
 .display-trips > li {
   text-align: center;
   min-width: 12vw;
-}*/
+}
 
-.show-page {
+.show-page ul, .show-page.header {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 .show-page li {
   text-align: center;
+}
+
+.show-page ul:nth-of-type(2n) {
+  background-color: rgba(96, 96, 102, 0.34);
+}
+
+.show-page.header {
+  font-size: 1.5em;
 }

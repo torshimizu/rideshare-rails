@@ -10,29 +10,23 @@
   </div>
 </section>
 
+<article>
+  <ul class='show-page header'>
+    <li>Name</li>
+    <li>Rating</li>
+  </ul>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <ul class='show-page'>
-        <li>Name</li>
-        <li>Rating</li>
-      </ul>
-    </tr>
-  </thead>
 
-  <tbody>
-    <section>
-      <ul class='show-page'>
-        <% @drivers.each do |driver| %>
-          <li>
-            <%= link_to "#{driver.name}", driver_path(driver.id) %>
-          </li>
-          <li>
-            <%= driver.average_rating %>
-          </li>
-        <% end %>
-      <ul>
-    </section>
-  </tbody>
-</table>
+  <section class='show-page'>
+    <% @drivers.each do |driver| %>
+    <ul>
+        <li>
+          <%= link_to "#{driver.name}", driver_path(driver.id) %>
+        </li>
+        <li>
+          <%= driver.average_rating %>
+        </li>
+    <ul>
+      <% end %>
+  </section>
+</article>
