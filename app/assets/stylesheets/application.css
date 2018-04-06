@@ -31,3 +31,12 @@ body {
   text-align: center;
   min-width: 12vw;
 }
+
+.show-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.show-page li {
+  text-align: center;
+}

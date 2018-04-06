@@ -1,8 +1,22 @@
 <h2>Drivers</h2>
 
+<h3>Find by Name</h3>
 <%= render partial: "shared/find_by_name", locals: {action_name: "Find Driver", url: by_name_path} %>
 
+<ul class='show-page'>
+  <li>Name</li>
+  <li>Rating</li>
+</ul>
 
-<% @drivers.each do |driver| %>
-  <p> <%= link_to "#{driver.name}", driver_path(driver.id) %> </p>
-<% end %>
+<section>
+  <ul class='show-page'>
+    <% @drivers.each do |driver| %>
+      <li>
+        <%= link_to "#{driver.name}", driver_path(driver.id) %>
+      </li>
+      <li>
+        <%= driver.average_rating %>
+      </li>
+    <% end %>
+  <ul>
+</section>

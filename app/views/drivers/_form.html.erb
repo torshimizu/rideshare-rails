@@ -1,18 +1,19 @@
 <h4>
   <%= page_title %>
 </h4>
+
 <% if @driver.errors.any?%>
-<% @driver.errors.each do |column, message|%>
-<%= column%> - <%= message %>
-<%end%>
+  <% @driver.errors.each do |column, message|%>
+    <%= column %> - <%= message %>
+  <%end%>
 <%end%>
 
 
 <%= form_for @driver do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
 
-<%= f.label :vin %>
-<%= f.text_field :vin %>
-<%= f.submit action_name %>
+  <%= f.label :vin %>
+  <%= f.text_field :vin %>
+  <%= f.submit action_name %>
 <% end %>
