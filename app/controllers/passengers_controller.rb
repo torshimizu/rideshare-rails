@@ -50,13 +50,9 @@ class PassengersController < ApplicationController
 
   def by_name
     passenger_name = params[:name]
-    @passenger = Passenger.where(disabled: false).find_by(name: passenger_name)
+    @passengers = Passenger.where(disabled: false).where(name: passenger_name)
 
-    if @passenger == nil
-      redirect_to passengers_path
-    else
-      redirect_to passenger_path(@passenger.id)
-    end
+    render :index
   end
 
   private

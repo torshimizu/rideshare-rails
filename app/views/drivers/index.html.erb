@@ -24,15 +24,24 @@
   <tbody>
     <section>
       <ul class='show-page'>
+        <% if @drivers.length == 0 %>
+        <%="Driver not found"%>
+        <% else %>
         <% @drivers.each do |driver| %>
-          <li>
-            <%= link_to "#{driver.name}", driver_path(driver.id) %>
-          </li>
-          <li>
-            <%= driver.average_rating %>
-          </li>
+        <li>
+          <%= link_to "#{driver.name}", driver_path(driver.id) %>
+        </li>
+        <li>
+          <%if driver.driver_on_trip %>
+          <%= "On Trip" %>
+          <%end%>
+        </li>
+        <li>
+          <%= driver.average_rating %>
+        </li>
         <% end %>
-      <ul>
-    </section>
-  </tbody>
-</table>
+        <%end%>
+        <ul>
+        </section>
+      </tbody>
+    </table>

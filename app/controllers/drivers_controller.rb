@@ -42,15 +42,11 @@ class DriversController < ApplicationController
   def by_name
     driver_name = params[:name]
 
-    @driver = Driver.where(disabled: false).find_by(name: driver_name)
+    @drivers = Driver.where(disabled: false).where(name: driver_name)
 
-    if @driver == nil
-      #flash.now[:error] = "Driver not found"
-      redirect_to drivers_path
-    else
-      redirect_to driver_path(@driver)
-    end
+    render :index
   end
+
 
   def destroy
 
