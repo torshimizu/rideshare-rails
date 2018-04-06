@@ -18,15 +18,19 @@
 
 
   <section class='show-page'>
-    <% @drivers.each do |driver| %>
     <ul>
+      <% @drivers.each do |driver| %>
         <li>
           <%= link_to "#{driver.name}", driver_path(driver.id) %>
         </li>
+      <% end %>
+    </ul>
+    <ul>
+      <% @drivers.each do |driver| %>
         <li>
           <%= driver.average_rating %>
         </li>
-    <ul>
       <% end %>
+    <ul>
   </section>
 </article>
