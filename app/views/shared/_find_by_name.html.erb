@@ -2,5 +2,5 @@
 <%= form_tag url, method: :get do %>
   <%= label_tag :name %>
   <%= text_field_tag :name, params[:name], required: true%>
-  <%= submit_tag action_name%>
+  <%= button_tag action_name, class: 'button is-primary is-outlined is-inverted is-small' %>
 <% end %>
