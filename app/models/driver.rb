@@ -45,7 +45,15 @@ class Driver < ApplicationRecord
       end
       return longest_driver_not_driving
     end
-
-
   end
+
+  def driver_on_trip
+    self.trips.each do |trip|
+      return true if trip.rating == nil
+    end
+    return false
+  end
+
+
+
 end

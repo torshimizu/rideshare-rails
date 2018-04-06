@@ -26,13 +26,15 @@ class TripsController < ApplicationController
     drivers = Driver.where(disabled: false)
     longest_driver_not_driving = nil
     drivers.each do |driver|
-      if driver.trips.empty? || driver.last_trip.date == nil 
-        longest_driver_not_driving = driver
-      elsif longest_driver_not_driving == nil || longest_driver_not_driving.trips.empty?
-        longest_driver_not_driving = driver
-      else
-        if longest_driver_not_driving.last_trip.date > driver.last_trip.date
+      unless driver.driver_on_trip
+        if driver.trips.empty? || driver.last_trip.date == nil
           longest_driver_not_driving = driver
+        elsif longest_driver_not_driving == nil || longest_driver_not_driving.trips.empty?
+          longest_driver_not_driving = driver
+        else
+          if longest_driver_not_driving.last_trip.date > driver.last_trip.date
+            longest_driver_not_driving = driver
+          end
         end
       end
     end
