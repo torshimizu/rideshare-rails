@@ -1,7 +1,7 @@
 class PassengersController < ApplicationController
 
   def index
-    @passengers = Passenger.all
+    @passengers = Passenger.where(disabled: false)
   end
 
   def new
@@ -39,17 +39,22 @@ class PassengersController < ApplicationController
   end
 
   def destroy
-    Passenger.destroy(params[:id])
+    passenger = Passenger.find(params[:id])
+    passenger.disabled = true
+    if passenger.save
+      redirect_to passengers_path
+    else
+      redirect_to passenger_path(passenger)
+    end
   end
 
   def by_name
     passenger_name = params[:name]
-    @passenger = Passenger.find_by(name: passenger_name)
+    @passenger = Passenger.where(disabled: false).find_by(name: passenger_name)
 
     if @passenger == nil
       redirect_to passengers_path
     else
-
       redirect_to passenger_path(@passenger.id)
     end
   end
