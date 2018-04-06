@@ -15,7 +15,17 @@
       <% else %>
         <li> <%= trip.passenger.name %> </li>
       <% end %>
-      <li> <%= trip.rating %> </li>
+      <li>
+        <% if trip.rating.nil? %>
+          <%= form_for trip do |f| %>
+            <%= f.label :rating %>
+            <%= f.number_field :rating %>
+            <%= f.submit 'Rate' %>
+          <% end %>
+        <% else %>
+          Rating: <%= trip.rating %>
+        <% end %>
+      </li>
       <li> <%= trip.cost %> </li>
     </ul>
   <% end %>

@@ -1,7 +1,14 @@
-<h2>All Passengers</h2>
-
-<%= render partial: "shared/find_by_name", locals: {action_name: "Find Passenger", url: passenger_by_name_path} %>
-
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Passengers
+      </h1>
+      <h3>Find by Name</h3>
+      <%= render partial: "shared/find_by_name", locals: {action_name: "Find Passenger", url: passenger_by_name_path} %>
+    </div>
+  </div>
+</section>
 
 <% @passengers.each do |passenger| %>
   <p> <%= link_to passenger.name, passenger_path(passenger) %> </p>
