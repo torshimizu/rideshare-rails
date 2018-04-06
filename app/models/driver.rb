@@ -15,7 +15,7 @@ class Driver < ApplicationRecord
   def average_rating
     count = 0
     stars = 0
-    return 0 if trips.empty?
+    return 0 if trips.empty? || trips.length == 1 
     self.trips.each do |trip|
       next if trip.rating.nil?
       count +=1
@@ -34,13 +34,15 @@ class Driver < ApplicationRecord
 
   def self.the_driver
     drivers = Driver.where(disabled: false)
-    longest_driver_not_driving = Driver.first
+    longest_driver_not_driving = drivers.first
     drivers.each do |driver|
       unless driver.driver_on_trip
         if driver.trips.empty? || driver.last_trip.date == nil
           longest_driver_not_driving = driver
-        elsif longest_driver_not_driving == nil || longest_driver_not_driving.trips.empty?
+          return longest_driver_not_driving
+        elsif longest_driver_not_driving.trips.empty?
           longest_driver_not_driving = driver
+          return longest_driver_not_driving
         else
           if longest_driver_not_driving.last_trip.date > driver.last_trip.date
             longest_driver_not_driving = driver
