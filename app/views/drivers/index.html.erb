@@ -10,38 +10,34 @@
   </div>
 </section>
 
+<article>
+  <ul class='show-page header'>
+    <li>Name</li>
+    <li>Rating</li>
+  </ul>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <ul class='show-page'>
-        <li>Name</li>
-        <li>Rating</li>
-      </ul>
-    </tr>
-  </thead>
 
-  <tbody>
-    <section>
-      <ul class='show-page'>
-        <% if @drivers.length == 0 %>
-        <%="Driver not found"%>
-        <% else %>
-        <% @drivers.each do |driver| %>
+<<<<<<< HEAD
+=======
+  <section class='show-page'>
+    <ul>
+      <% if @drivers.length == 0 %>
+      <%="Driver not found"%>
+      <% else %>
+      <% @drivers.each do |driver| %>
         <li>
           <%= link_to "#{driver.name}", driver_path(driver.id) %>
         </li>
-        <li>
-          <%if driver.driver_on_trip %>
-          <%= "On Trip" %>
-          <%end%>
-        </li>
+      <% end %>
+    </ul>
+    <ul>
+      <% @drivers.each do |driver| %>
         <li>
           <%= driver.average_rating %>
         </li>
-        <% end %>
-        <%end%>
-        <ul>
-        </section>
-      </tbody>
-    </table>
+      <% end %>
+      <%end%>
+    <ul>
+  </section>
+</article>
+>>>>>>> 7222325c0ef8f7d787f5e42fff8df0543368a1d4

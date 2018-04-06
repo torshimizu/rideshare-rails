@@ -16,12 +16,14 @@
         <li> <%= trip.passenger.name %> </li>
       <% end %>
       <li>
-        <% if trip.rating.nil? %>
+        <% if trip.rating.nil? && model == @passenger %>
           <%= form_for trip do |f| %>
             <%= f.label :rating %>
             <%= f.number_field :rating %>
             <%= f.submit 'Rate' %>
           <% end %>
+        <% elsif model == @driver && trip.rating.nil? %>
+          Rating: Ongoing trip
         <% else %>
           Rating: <%= trip.rating %>
         <% end %>
