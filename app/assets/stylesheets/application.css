@@ -16,10 +16,17 @@
 
 body {
   font-family: 'Dosis', sans-serif;
-
 }
 
-.display-trips {
+.navbar-item a {
+  color: white;
+}
+
+.navbar-item a:hover {
+  color: rgb(49, 213, 193);
+}
+
+/*.display-trips {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
@@ -30,7 +37,7 @@ body {
 .display-trips > li {
   text-align: center;
   min-width: 12vw;
-}
+}*/
 
 .show-page {
   display: grid;

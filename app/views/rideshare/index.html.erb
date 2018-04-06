@@ -1,17 +1,14 @@
-<section class="hero is-primary is-medium">
+<section class="hero is-primary is-fullheight">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
         Welcome to our Rideshare App!
       </h1>
+        <br>
       <h2 class="subtitle">
-        This is a subtitle
+        <span class='button is-warning'><%= link_to 'For Drivers', drivers_path %></span>
+        <span class='button is-warning'><%= link_to 'For Passengers', passengers_path %></span>
       </h2>
     </div>
   </div>
 </section>
-
-<%= link_to 'For Drivers', drivers_path %>
-<br><br>
-
-<%= link_to 'For Passengers', passengers_path %>

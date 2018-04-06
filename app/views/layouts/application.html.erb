@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="has-navbar-fixed-top">
   <head>
     <title>RideshareRails</title>
     <%= csrf_meta_tags %>
@@ -12,12 +12,12 @@
 
   <body>
     <header>
-      <nav>
-        <%= link_to 'Main Page', root_path %>
-        <%= link_to 'Drivers', drivers_path %>
-        <%= link_to "Add Driver", new_driver_path %>
-        <%= link_to 'Passengers', passengers_path %>
-        <%= link_to "Add Passenger", new_passenger_path %>
+      <nav class='navbar is-fixed-top is-dark'>
+        <div class='navbar-item'><%= link_to 'Main Page', root_path %></div>
+        <div class='navbar-item'><%= link_to 'Drivers', drivers_path %></div>
+        <div class='navbar-item'><%= link_to "Add Driver", new_driver_path %></div>
+        <div class='navbar-item'><%= link_to 'Passengers', passengers_path %></div>
+        <div class='navbar-item'><%= link_to "Add Passenger", new_passenger_path %></div>
       </nav>
     </header>
     <main>
