@@ -24,6 +24,11 @@
       <% @drivers.each do |driver| %>
         <li>
           <%= link_to "#{driver.name}", driver_path(driver.id) %>
+            <% if driver.driver_on_trip %>
+              <span class='on-trip'>
+                On Trip
+              </span>
+            <% end %>
         </li>
       <% end %>
     </ul>
