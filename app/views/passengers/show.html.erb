@@ -1,14 +1,21 @@
-<h3> Passenger info: </h3>
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%=@passenger.name%>
+      </h1>
+      <p><%= link_to("Edit info", edit_passenger_path(@passenger.id)) %></p>
+      <p> ID : <%= @passenger.id %> </p>
+      <p> Phone #: <%= @passenger.phone_num %> </p>
+      <p> Total Spent: $<%= @passenger.total_spent %> </p>
+    </div>
+  </div>
+</section>
 
-<h2> <%= @passenger.name %> </h2>
-<p><%= link_to("Edit info", edit_passenger_path(@passenger.id)) %></p>
-<p> ID : <%= @passenger.id %> </p>
-<p> Phone #: <%= @passenger.phone_num %> </p>
-<p> Total Spent: $<%= @passenger.total_spent %> </p>
 
-<br>
-<p> <%= link_to 'Request Trip', passenger_trips_path(@passenger), method: :post %>
-<br>
+
+<p> <%= link_to 'Request Trip', passenger_trips_path(@passenger), method: :post, class: 'button is-large is-link' %>
+
 
 <%= render partial: 'shared/display_trips', locals: {model: @passenger, pass_driver: 'Driver'} %>
 

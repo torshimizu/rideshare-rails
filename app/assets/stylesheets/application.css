@@ -77,3 +77,13 @@ body {
   background-color: #ffdd57;
   color: black;
 }
+
+.find-by-name {
+  width: 70vw;
+  margin: auto;
+}
+
+.errors {
+  list-style-type: none;
+  margin-left: 15vw;
+}

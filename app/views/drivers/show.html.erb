@@ -1,13 +1,20 @@
-<h3> Driver info: </h3>
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%=@driver.name%>
+      </h1>
+      <p><%= link_to("Edit info", edit_driver_path(@driver.id)) %></p>
+      <p>ID : <%=@driver.id%></p>
+      <p>VIN : <%=@driver.vin%></p>
+      <p>Total made in trips: $<%= @driver.earnings %></p>
+      <p>Average rating: <%= @driver.average_rating%></p>
+    </div>
+  </div>
+</section>
 
-<h2><%=@driver.name%></h2>
-<p><%= link_to("Edit info", edit_driver_path(@driver.id)) %></p>
-<p>ID : <%=@driver.id%></p>
-<p>VIN : <%=@driver.vin%></p>
-<p>Total made in trips: $<%= @driver.earnings %></p>
-<p>Average rating: <%= @driver.average_rating%></p>
 
-<br></br>
+
 <%= render partial: 'shared/display_trips', locals: {model: @driver, pass_driver: 'Passenger'} %>
 
 <br></br>

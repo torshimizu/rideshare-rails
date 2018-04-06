@@ -1,0 +1,34 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= page_title %>
+      </h1>
+    </div>
+  </div>
+</section>
+
+<% if model.errors.any?%>
+  <% model.errors.each do |column, message|%>
+    <li class='errors'>
+      <strong><%= column.capitalize %></strong> - <%= message %>
+    </li>
+  <%end%>
+<%end%>
+
+<div class='find-by-name'>
+  <%= form_for model do |f| %>
+    <%= f.label :name, class: 'label' %>
+    <%= f.text_field :name, class: 'control input' %>
+
+    <% if model = @passenger %>
+      <%= f.label :phone_num, class: 'label' %>
+      <%= f.text_field :phone_num, class: 'control input' %>
+      <%= f.submit action_name, class: 'control button is-link' %>
+    <% elsif model = @driver %>
+      <%= f.label :vin, class: 'label' %>
+      <%= f.text_field :vin, class: 'control input' %>
+      <%= f.submit action_name, class: 'control button is-link' %>
+    <% end %>
+  <% end %>
+</div>
