@@ -9,38 +9,28 @@
     </div>
   </div>
 </section>
-<% if @passengers.length == 0 %>
-<%="Passenger not found"%>
-<% else %>
-<% @passengers.each do |passenger| %>
-  <p> <%= link_to passenger.name, passenger_path(passenger) %> </p>
-<% end %>
-<<<<<<< HEAD
-<% end %>
-=======
+
 
 <article>
   <ul class='show-page header'>
     <li>Name</li>
-    <li>Rating</li>
   </ul>
 
 
   <section class='show-page'>
     <ul>
-      <% @passengers.each do |passenger| %>
-        <li>
-          <%= link_to "#{passenger.name}", passenger_path(passenger.id) %>
-        </li>
+      <% if @passengers.length == 0 %>
+        <%="Passenger not found"%>
+      <% else %>
+        <% @passengers.each do |passenger| %>
+          <li>
+            <%= link_to "#{passenger.name}", passenger_path(passenger.id) %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
-    <ul>
-      <% @passengers.each do |passenger| %>
-        <li>
-          <%= passenger.average_rating %>
-        </li>
-      <% end %>
-    <ul>
+
+
+
   </section>
 </article>
->>>>>>> 7222325c0ef8f7d787f5e42fff8df0543368a1d4

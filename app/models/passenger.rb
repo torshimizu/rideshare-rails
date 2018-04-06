@@ -10,4 +10,6 @@ class Passenger < ApplicationRecord
     end
     return total.round(2)
   end
+
+
 end

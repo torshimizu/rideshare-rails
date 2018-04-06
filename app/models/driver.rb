@@ -15,11 +15,9 @@ class Driver < ApplicationRecord
   def average_rating
     count = 0
     stars = 0
-<<<<<<< HEAD
-    return 0 if trips.empty? || trips.length == 1
-=======
+
     return 0 if trips.empty? || (trips.length == 1 && trips.any? {|trip| trip.rating.nil? })
->>>>>>> 7222325c0ef8f7d787f5e42fff8df0543368a1d4
+
     self.trips.each do |trip|
       next if trip.rating.nil?
       count +=1
