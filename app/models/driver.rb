@@ -60,19 +60,23 @@ class Driver < ApplicationRecord
     return drivers_trips.first
   end
 
-  def the_driver
-    longest_driver_not_driving = nil
+  def self.the_driver
     drivers = Driver.where(disabled: false)
+    longest_driver_not_driving = Driver.first
     drivers.each do |driver|
-      if longest_driver_not_driving == nil
-        longest_driver_not_driving = driver
-      else
-        if longest_driver_not_driving.last_trip.date > driver.last_trip.date
+      unless driver.driver_on_trip
+        if driver.trips.empty? || driver.last_trip.date == nil
           longest_driver_not_driving = driver
+        elsif longest_driver_not_driving == nil || longest_driver_not_driving.trips.empty?
+          longest_driver_not_driving = driver
+        else
+          if longest_driver_not_driving.last_trip.date > driver.last_trip.date
+            longest_driver_not_driving = driver
+          end
         end
       end
-      return longest_driver_not_driving
     end
+    return longest_driver_not_driving
   end
 
   def driver_on_trip
