@@ -12,9 +12,15 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = Trip.find(params[:id])
-    @driver = Driver.find(@trip.driver_id)
-    @passenger = Passenger.find(@trip.passenger_id)
+    if params[:trip]
+      @trip = Trip.find(params[:trip][:id])
+      @driver = @trip.driver
+      @passenger = @trip.passenger
+    else
+      @trip = Trip.find(params[:id])
+      @driver = Driver.find(@trip.driver_id)
+      @passenger = Passenger.find(@trip.passenger_id)
+    end
   end
 
   def new
@@ -44,11 +50,11 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip.rating = params[:trip][:rating]
 
-    @trip.save
-    redirect_to trip_path(@trip)
-  end
-
-  def destroy
+    if @trip.save
+      redirect_to trip_path(@trip)
+    else
+      render :show
+    end
   end
 
   private

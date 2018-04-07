@@ -3,15 +3,13 @@ Rails.application.routes.draw do
 root 'rideshare#index'
 
 get 'drivers/by_name', to: 'drivers#by_name', as: 'by_name'
-resources :drivers do
-  resources :trips, only: [:index]
-end
+resources :drivers
 
 get 'passengers/by_name', to: 'passengers#by_name', as: 'passenger_by_name'
 resources :passengers do
-  resources :trips, only: [:index, :new, :create]
+  resources :trips, only: [:new, :create]
 end
 
-resources :trips
+resources :trips, except: [:destroy]
 resources :rideshare, only: [:index]
 end
