@@ -4,7 +4,8 @@
       <h1 class="title">
         <%=@passenger.name%>
       </h1>
-      <p><%= link_to("Edit info", edit_passenger_path(@passenger.id)) %></p>
+      <p><%= link_to("Edit info", edit_passenger_path(@passenger.id), class: 'button is-small is-info') %></p>
+      <br>
       <p> ID : <%= @passenger.id %> </p>
       <p> Phone #: <%= @passenger.phone_num %> </p>
       <p> Total Spent: $<%= @passenger.total_spent %> </p>

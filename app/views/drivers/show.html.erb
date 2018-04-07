@@ -4,7 +4,8 @@
       <h1 class="title">
         <%=@driver.name%>
       </h1>
-      <p><%= link_to("Edit info", edit_driver_path(@driver.id)) %></p>
+      <p><%= link_to("Edit info", edit_driver_path(@driver.id), class: 'button is-small is-info')%></p>
+      <br>
       <p>ID : <%=@driver.id%></p>
       <p>VIN : <%=@driver.vin%></p>
       <p>Total made in trips: $<%= @driver.earnings %></p>
